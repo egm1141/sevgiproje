@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Evet / Hayır</title>
+  <style>
+    body { background:#1e2124; color:white; font-family:sans-serif; text-align:center; overflow:hidden; }
+    #buttons { margin-top:200px; }
+    button {
+      font-size:24px; padding:20px 40px; margin:20px;
+      border:none; border-radius:10px; cursor:pointer;
+    }
+    #evet { background:#32a055; color:white; }
+    #hayir { background:#b43c3c; color:white; }
+    #love { font-size:72px; display:none; margin-top:200px; }
+    .balloon {
+      position:absolute; border-radius:50%; opacity:0.8;
+    }
+  </style>
+</head>
+<body>
+  <div id="buttons">
+    <button id="evet">Evet</button>
+    <button id="hayir">Hayır</button>
+  </div>
+  <div id="love">Seni Seviyorum ❤️</div>
+
+  <script>
+    const evetBtn = document.getElementById("evet");
+    const hayirBtn = document.getElementById("hayir");
+    const buttons = document.getElementById("buttons");
+    const love = document.getElementById("love");
+
+    let evetSize = 1;
+
+    hayirBtn.onclick = () => {
+      evetSize += 0.2;
+      evetBtn.style.transform = `scale(${evetSize})`;
+    };
+
+    evetBtn.onclick = () => {
+      buttons.style.display = "none";
+      love.style.display = "block";
+      for(let i=0;i<20;i++) createBalloon();
+    };
+
+    function createBalloon(){
+      const b = document.createElement("div");
+      b.className="balloon";
+      b.style.width=b.style.height=(20+Math.random()*30)+"px";
+      b.style.left=Math.random()*window.innerWidth+"px";
+      b.style.top=window.innerHeight+"px";
+      b.style.background=`hsl(${Math.random()*360},70%,60%)`;
+      document.body.appendChild(b);
+      animateBalloon(b);
+    }
+
+    function animateBalloon(b){
+      let y=parseInt(b.style.top);
+      function move(){
+        y-=2;
+        b.style.top=y+"px";
+        if(y<-50){ y=window.innerHeight; b.style.left=Math.random()*window.innerWidth+"px"; }
+        requestAnimationFrame(move);
+      }
+      move();
+    }
+  </script>
+</body>
+</html>
