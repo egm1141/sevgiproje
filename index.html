@@ -21,6 +21,7 @@
       border: none;
       border-radius: 18px;
       cursor: pointer;
+      transition: transform 0.2s ease;
     }
     #evet {
       background: #32b035;
@@ -57,13 +58,13 @@
 
     let evetSize = 1;
 
-    // Hayır'a basınca Evet büyüyor
+    // Hayır'a basınca Evet büyüyecek
     hayirBtn.onclick = () => {
-      evetSize *= 1.2; 
+      evetSize *= 1.2; // her tıklamada %20 büyür
       evetBtn.style.transform = `scale(${evetSize})`;
     };
 
-    // Evet'e basınca balonlar ve yazı çıkıyor
+    // Evet'e basınca balonlar ve yazı çıkacak
     evetBtn.onclick = () => {
       buttons.style.display = "none";
       love.style.display = "block";
