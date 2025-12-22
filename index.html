@@ -57,11 +57,13 @@
 
     let evetSize = 1;
 
+    // Hayır'a basınca Evet büyüyor
     hayirBtn.onclick = () => {
-      evetSize *= 0.2;
+      evetSize *= 1.2; 
       evetBtn.style.transform = `scale(${evetSize})`;
     };
 
+    // Evet'e basınca balonlar ve yazı çıkıyor
     evetBtn.onclick = () => {
       buttons.style.display = "none";
       love.style.display = "block";
