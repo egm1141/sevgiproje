@@ -36,7 +36,7 @@
       font-size: 24px;
       margin-top: 30px;
       display: block;
-      color: #ffd700; /* altın sarısı */
+      color: #ffd700;
       text-align: center;
     }
     #love {
@@ -59,24 +59,29 @@
   </div>
   <div id="love">Seni Seviyorum ❤️</div>
 
+  <!-- 🎵 Şarkı dosyası (index.html ile aynı klasörde olmalı) -->
+  <audio id="song" src="yalin-ask.mp3"></audio>
+
   <script>
     const evetBtn = document.getElementById("evet");
     const hayirBtn = document.getElementById("hayir");
     const buttons = document.getElementById("buttons");
     const love = document.getElementById("love");
+    const song = document.getElementById("song");
 
     let evetSize = 1;
 
     // Hayır'a basınca Evet büyüyecek
     hayirBtn.onclick = () => {
-      evetSize *= 1.2; // her tıklamada %20 büyür
+      evetSize *= 1.2;
       evetBtn.style.transform = `scale(${evetSize})`;
     };
 
-    // Evet'e basınca balonlar ve yazı çıkacak
+    // Evet'e basınca balonlar, yazı ve şarkı çıkacak
     evetBtn.onclick = () => {
       buttons.style.display = "none";
       love.style.display = "block";
+      song.play(); // şarkıyı başlat
       for (let i = 0; i < 28; i++) createBalloon();
     };
 
