@@ -60,7 +60,7 @@
   <div id="love">Seni Seviyorum ❤️</div>
 
   <!-- 🎵 Şarkı dosyası (index.html ile aynı klasörde olmalı) -->
-  <audio id="song" src="yalin-ask.mp3"></audio>
+  <audio id="song" src="yalin-ask.mp3" preload="auto"></audio>
 
   <script>
     const evetBtn = document.getElementById("evet");
@@ -81,7 +81,8 @@
     evetBtn.onclick = () => {
       buttons.style.display = "none";
       love.style.display = "block";
-      song.play(); // şarkıyı başlat
+      song.muted = false;   // mobilde sessiz başlatma sorununu çözer
+      song.play();          // şarkıyı başlat
       for (let i = 0; i < 28; i++) createBalloon();
     };
 
